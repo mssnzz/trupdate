@@ -55,4 +55,4 @@ app.get('/update', async (req: Request<{}, {}, {}, Parameters>, res: Response) =
     }
 });
 
-app.listen(8000, '0.0.0.0', () => console.log(`Server started at http://0.0.0.0:8080/`));
+app.listen(8080, '0.0.0.0', () => console.log(`Server started at http://0.0.0.0:8080/`));
