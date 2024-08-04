@@ -2,7 +2,6 @@ import express from 'express';
 import { compare } from 'compare-versions';
 import { github } from '../lib/github.js';
 import { getReleases } from '../lib/getReleases.js';
-import { template } from '../lib/template.js';
 import type { Request, Response } from 'express';
 
 const app = express();
@@ -30,8 +29,8 @@ app.get('/update', async (req: Request<{}, {}, {}, Parameters>, res: Response) =
             pub_date: latest.published_at, // Fecha de publicación
             platforms: {
               [`${req.query.target}-${req.query.arch}`]: {
-                signature: release.signature, // Añadir el contenido del archivo .sig
-                url: release.url // URL del archivo de actualización
+                url: release.url, // URL del archivo de actualización
+                signature: release.signature // Firma del archivo
               }
             }
           };
