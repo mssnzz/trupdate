@@ -30,11 +30,11 @@ app.get('/update', async (req: Request<{}, {}, {}, Parameters>, res: Response) =
             platforms: {
               [`${req.query.target}-${req.query.arch}`]: {
                 url: release.url, // URL del archivo de actualización
-                signature: release.signature // Firma del archivo
+                signature: release.assets // Firma del archivo
               }
             }
           };
-
+          console.log('Release:', release);
           res.status(200).json(responseJson);
         } else {
           res.status(204).send();
@@ -55,4 +55,4 @@ app.get('/update', async (req: Request<{}, {}, {}, Parameters>, res: Response) =
   }
 });
 
-app.listen(8080, '0.0.0.0', () => console.log(`Server started at http://0.0.0.0:8080/`));
+app.listen(8000, '0.0.0.0', () => console.log(`Server started at http://0.0.0.0:8080/`));
